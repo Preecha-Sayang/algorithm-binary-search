@@ -22,6 +22,32 @@ const studentsInfo = [
   { name: "Ethan", age: 13, classNumber: 7, score: 47 },
 ];
 
+function updateStudentScore(studentsInfo, targetStudent, addScore){
+    let left = 0
+    let right = studentsInfo.length -1
+    let position = 0
+
+    while (left <= right ){
+        let mid = Math.floor((left+right)/2)
+
+        if( studentsInfo[mid].name === targetStudent){
+            position = mid
+            let score = studentsInfo[position].score + addScore 
+            return `${targetStudent} score is now ${score}`
+
+
+        } else if(studentsInfo[mid].name < targetStudent){
+            left= mid+1
+        } else {
+            right = mid -1
+        }
+    }
+
+    return `Not found ${targetStudent} on the list.`
+}
+
+
+
 console.log(updateStudentScore(studentsInfo, "Ethan", 20));
 // Ethan score is now 67
 

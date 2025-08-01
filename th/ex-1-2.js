@@ -19,5 +19,23 @@ const studentsInfo = [
   { name: "Ethan", age: 13, classNumber: 7, favoriteSubject: "Art" },
 ];
 
+function findTargetStudent(studentsInfo, targetStudent){
+    left =0
+    right = studentsInfo.length -1
+    
+    while (left <= right){
+        let mid = Math.floor((left+right)/2)
+        if(studentsInfo[mid].name === targetStudent){
+            return mid
+        } else if (studentsInfo[mid].name < targetStudent){
+            left = mid+1
+        } else {
+            right=mid-1
+        }
+    }
+
+    return -1
+}
+
 console.log(findTargetStudent(studentsInfo, "Charlie")); // 2
 console.log(findTargetStudent(studentsInfo, "Jenny")); // -1
